@@ -1,0 +1,55 @@
+				For Store No: 99																
+																				
+Customer Name (ID)	Trns No	Online Trans	Trans Desc	Taxable Merch	Non Taxable Merch	Taxable Non-Merch	Non Tax Non Merch	Restock Charge	Sales Tax	Cash Amount	Check Amount	Bank Card Amt	Payment Type Code	Refund Amount	Applied Amount	Adjusted Amount	A/R Amount	Exchange	Financed	Exception
+"Brye, Susan (4424050)"	30984	Y	Mrch Sale	-1797			-299		-113.21			2209.21	V				0			
+"Brye, Susan (4424050)"	30985	Y	Mrch Sale	-2156					-185.42			2291.83	V				0.00 *			
+"Brye, Susan (4424050)"	30985	Y	Mrch Sale									49.59	Z				0			
+"Ormsby, Jane (6774229)"	30986	N	Mrch Sale	-549			-149		-47.21			745.21	V				0			
+E (7974764)	30987	N	Mrch Sale	-36					-3.1			39.1	V				0			
+Arizona Delivery Service Llc (9993827)	30988	Y	Exch Merch Pending														0			
+Arizona Delivery Service Llc (9993827)	30989	Y	Mrch Sale		-1598		-149										1747			
+"Barbari, Mary (8159956)"	30990	N	Exch Merch Pending														0			
+"Barbari, Mary (8159956)"	30991	N	Mrch Sale	-598			-1		-51.43								650.43			
+"Milesic, Zora (3320030)"	30992	Y	Mrch Sale	-549					-47.21			596.21	V				0			
+																				
+01/28/25 Transaction Totals:				-5685	-1598	0	-598	0	-447.58	0	0	5931.15	V	0	0	0	2397.43			
+																				
+				    Sales Tax Detail Info																
+				6.3	-1797															
+				8.6	-3888															
+																				
+				Credit Card Detail Info - Total....		Credit Card Detail Info - Online....		Credit Card Detail Info - Store....												
+				Visa	5881.56	Visa - Online	5097.25	Visa - Store	784.31											
+				Alt Pmt	49.59	Alt Pmt - Online	49.59	Alt Pmt - Store	0											
+																				
+																				
+				Cash and Checks :  ______________________________   Please explain any short or over amounts below.																
+																				
+																				
+				Credit Cards    :  ______________________________																
+																				
+																				
+				Short or Over   :  ______________________________   ______________________________																
+																				
+																				
+				                               Short                              Over																
+																				
+																				
+																				
+																				
+																				
+				Mngr's Signature:  ______________________________																
+																				
+																				
+				Report Grand Totals:																
+01/28/25 Transaction Totals:				-5685	-1598	0	-598	0	-447.58	0	0	5931.15	Z	0	0	0	2397.43			
+																				
+				    Sales Tax Detail Info																
+				6.3	-1797															
+				8.6	-3888															
+																				
+				Credit Card Detail Info - Total....		Credit Card Detail Info - Online....		Credit Card Detail Info - Store....												
+				Visa	5881.56	Visa - Online	5097.25	Visa - Store	784.31											
+				Alt Pmt	49.59	Alt Pmt - Online	49.59	Alt Pmt - Store	0											
+																				
+				* Indicates an AR subtotal for transactions that have multiple checks and/or credit cards.																
