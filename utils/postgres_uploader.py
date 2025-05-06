@@ -1,14 +1,17 @@
-# utils/postgres_uploader.py
-
 import pandas as pd
+import os
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
 
-# TODO: Replace these with your real credentials or read from a .env/config
-DB_HOST = "localhost"
-DB_PORT = "5432"
-DB_NAME = "your_database"
-DB_USER = "your_user"
-DB_PASS = "your_password"
+# Load environment variables
+load_dotenv()
+
+# Match .env variable names exactly
+DB_HOST = os.getenv("PG_HOST", "localhost")
+DB_PORT = os.getenv("PG_PORT", "5432")
+DB_NAME = os.getenv("PG_DATABASE")
+DB_USER = os.getenv("PG_USER")
+DB_PASS = os.getenv("PG_PASSWORD")
 
 def get_engine():
     connection_string = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
