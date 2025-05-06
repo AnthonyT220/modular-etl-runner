@@ -1,0 +1,15 @@
+[Unit]
+Description=ETL Watcher Service for Modular ETL Runner
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/modular-etl-runner
+ExecStart=/usr/bin/python3 watch_incoming.py
+Restart=on-failure
+RestartSec=5
+Environment="PYTHONUNBUFFERED=1"
+EnvironmentFile=/opt/modular-etl-runner/.env
+
+[Install]
+WantedBy=multi-user.target

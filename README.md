@@ -1,96 +1,141 @@
-
 # Modular ETL Runner
 
-A modular, scalable ETL (Extract, Transform, Load) framework built in Python. It processes multiple file types (e.g., sales orders, inbound inventory), transforms them as needed, and uploads the cleaned data into a PostgreSQL database.
+This project automates the ingestion and transformation of structured sales and inventory files into a PostgreSQL database. It includes automatic detection of new files, real-time processing, validation, cleaning, and logging of ETL activity.
 
 ---
 
-## 🗂️ Project Structure
+## ✅ Features
+
+- Watches `incoming/` folders for new sales and inventory files
+- Cleans, transforms, and validates `.txt` and `.tsv` tab-delimited reports
+- Applies custom business rules for formatting and calculations
+- Inserts structured records into PostgreSQL
+- Maintains detailed ETL logs (success, duplicate, rejected)
+- Auto-moves processed files to `processed/` or `rejected/` folders
+- Auto-recreates Postgres tables if empty and schema mismatch is detected
+- Compatible with `systemd` services on Linux servers
+
+---
+
+## 📁 Folder Structure
 
 ```
 modular-etl-runner/
-├── etl_runner.py               # Main controller that routes files to ETL modules
+├── data_files/
+│   ├── daily_detail_sales/
+│   │   ├── incoming/
+│   │   ├── processed/
+│   │   └── rejected/
+│   └── inbound_inventory/
+│       ├── incoming/
+│       ├── processed/
+│       └── rejected/
 ├── etl/
-│   ├── daily_detail_sales_etl.py   # ETL logic for sales files
-│   ├── inbound_inventory_etl.py    # ETL logic for inbound inventory files
-│   └── erp_loader.py               # ERP-specific data extraction (if used)
+│   ├── daily_detail_sales_etl.py
+│   └── inbound_inventory_etl.py
+├── sql/
+│   ├── create_etl_log_table.sql
+│   ├── create_inbound_inventory_table.sql
+│   └── create_daily_detail_sales_table.sql
 ├── utils/
-│   ├── postgres_uploader.py       # Uploads DataFrames to PostgreSQL
-│   └── file_loader.py             # Optional file handling utils
-├── data_files/                # Directory for input files
-├── requirements.txt           # Python dependencies
-└── README.md
+│   └── postgres_uploader.py
+├── watch_incoming.py
+├── etl_runner.py
+├── .env
+└── requirements.txt
 ```
 
 ---
 
-## 🚀 How It Works
+## ⚙️ Setup Instructions (Linux Server)
 
-1. Drop raw data files into the `data_files/` directory.
-2. Run `etl_runner.py`.
-3. The script detects the file type based on naming patterns and calls the appropriate ETL module.
-4. Transformed data is uploaded to PostgreSQL.
-
----
-
-## ▶️ Running the Pipeline
+### 1. Install Python and PostgreSQL
 
 ```bash
-python etl_runner.py
+sudo apt update
+sudo apt install python3 python3-pip postgresql postgresql-client
 ```
 
-This will:
-- Loop through all files in `data_files/`
-- Use matching rules (e.g., filenames containing "sales", "inbound")
-- Route each to the corresponding ETL logic in `etl/`
-- Upload results to a table in Postgres
+### 2. Clone the Repo
 
----
-
-## 🧠 Pipeline Detection Rules
-
-The logic in `etl_runner.py` uses simple rules like:
-
-| File contains... | Uses module...                | Loads to table...        |
-|------------------|-------------------------------|--------------------------|
-| `sales`          | `daily_detail_sales_etl.py`   | `daily_detail_sales`     |
-| `inbound`        | `inbound_inventory_etl.py`    | `inbound_inventory`      |
-
-More modules can be added by extending `etl/` and mapping them in the controller.
-
----
-
-## 🔌 PostgreSQL Upload
-
-Ensure your `postgres_uploader.py` script contains connection logic using a secure approach (e.g., environment variables or `.env` file).
-
-Example interface:
-```python
-def upload_to_postgres(df, table_name: str) -> None:
-    pass  # Upload logic here
+```bash
+git clone https://github.com/yourusername/modular-etl-runner.git
+cd modular-etl-runner
 ```
 
----
-
-## ➕ Adding a New Pipeline
-
-1. Create a new file in `etl/`, like `new_type_etl.py`
-2. Implement `run_etl(file_path)` to return a cleaned DataFrame
-3. Update `etl_runner.py` to recognize files matching the new pattern
-4. That’s it! You’ve added a new pipeline.
-
----
-
-## 📦 Dependencies
-
-Install requirements with:
+### 3. Install Requirements
 
 ```bash
 pip install -r requirements.txt
 ```
 
+### 4. Create the PostgreSQL Tables
+
+```bash
+psql -U your_pg_user -d your_db_name -h localhost -f sql/create_etl_log_table.sql
+psql -U your_pg_user -d your_db_name -h localhost -f sql/create_inbound_inventory_table.sql
+psql -U your_pg_user -d your_db_name -h localhost -f sql/create_daily_detail_sales_table.sql
+```
+
+### 5. Configure Environment Variables
+
+Create a `.env` file in the root directory:
+
+```ini
+PG_HOST=localhost
+PG_PORT=5432
+PG_USER=postgres
+PG_PASSWORD=yourpassword
+PG_DATABASE=modular_etl
+```
+
 ---
 
-## 👨‍💻 Maintained by
+## 🏁 Running the Watcher
 
-Anthony Turner
+```bash
+python3 watch_incoming.py
+```
+
+To stop: `CTRL+C`
+
+---
+
+## 🛠 Run as a systemd Service
+
+1. Copy `modular_etl.service` to `/etc/systemd/system/`
+2. Enable and start:
+
+```bash
+sudo systemctl daemon-reexec
+sudo systemctl enable modular_etl.service
+sudo systemctl start modular_etl.service
+```
+
+---
+
+## 🔍 Logs
+
+- All activity is tracked in the `etl_log` table
+- Duplicate files are skipped and logged
+- Rejected files are moved to the `rejected/` folder
+
+---
+
+## 📦 Dependencies
+
+See `requirements.txt` for full list.
+
+---
+
+## 🧪 Tested On
+
+- Ubuntu 22.04
+- Python 3.10+
+- PostgreSQL 14+
+
+---
+
+## 📬 Questions?
+
+Reach out to the project maintainer.

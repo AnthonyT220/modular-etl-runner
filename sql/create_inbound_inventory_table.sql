@@ -1,23 +1,23 @@
--- Drop the table if it already exists (optional for dev)
+-- Drop the table if it already exists
 DROP TABLE IF EXISTS inbound_inventory;
 
 -- Create the inbound_inventory table
 CREATE TABLE inbound_inventory (
-    vendor_id TEXT,
-    stock_no TEXT,
-    product_name TEXT,
-    division TEXT,
-    dept TEXT,
-    eta_week TEXT,
-    eta_date DATE,
-    rqst_ship_date TEXT,
-    confirm_date TEXT,
-    qty INTEGER,
-    po_no TEXT,
-    container_no TEXT,
-    confirmation_no TEXT,
-    last_cost NUMERIC(12, 2),
-    date_created TEXT,
-    po_date TEXT,
-    report_date DATE
+    "Vendor#" TEXT,
+    "Stock No." TEXT,
+    "Product Name" TEXT,
+    "Division" TEXT,
+    "Dept." TEXT,
+    "ETA Week" TEXT,
+    "ETA Date" DATE,
+    "Rqst Ship Date" DATE,
+    "Confirm Date" DATE,
+    "Qty" INTEGER,
+    "Po#" TEXT,
+    "Container No" TEXT,
+    "Confirmation No" TEXT,
+    "Last Cost" NUMERIC(12, 2),
+    "Date Created" DATE,
+    "PO Date" DATE,
+    "Report Date" DATE
 );
