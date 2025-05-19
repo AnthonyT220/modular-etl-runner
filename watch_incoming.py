@@ -10,14 +10,12 @@ from datetime import datetime
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from etl.daily_detail_sales_etl import run_etl as run_sales_etl
-from etl.inbound_inventory_etl import run_etl as run_inventory_etl
 from etl.inbound_shipments_etl import run_etl as run_shipments_etl
 from utils.postgres_uploader import upload_to_postgres
 
 # === CONFIG ===
 WATCH_PATHS = {
     "daily_detail_sales": "data_files/daily_detail_sales/incoming",
-    "inbound_inventory": "data_files/inbound_inventory/incoming",
     "inbound_shipments": "data_files/inbound_shipments/incoming"
 }
 
@@ -49,7 +47,6 @@ class NewFileHandler(FileSystemEventHandler):
 
                 etl_func_map = {
                     "daily_detail_sales": run_sales_etl,
-                    "inbound_inventory": run_inventory_etl,
                     "inbound_shipments": run_shipments_etl
                 }
                 etl_func = etl_func_map[table_name]

@@ -1,7 +1,6 @@
 import os
 import psycopg2
 from etl.daily_detail_sales_etl import run_etl as run_sales_etl
-from etl.inbound_inventory_etl import run_etl as run_inbound_inventory_etl
 from etl.inbound_shipments_etl import run_etl as run_inbound_shipments_etl
 from utils.postgres_uploader import upload_to_postgres
 from datetime import datetime
@@ -13,7 +12,6 @@ load_dotenv()
 
 pipeline_map = {
     "daily_detail_sales": run_sales_etl,
-    "inbound_inventory": run_inbound_inventory_etl,
     "inbound_shipments": run_inbound_shipments_etl,
 }
 

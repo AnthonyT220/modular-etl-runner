@@ -26,16 +26,16 @@ modular-etl-runner/
 │   │   ├── incoming/
 │   │   ├── processed/
 │   │   └── rejected/
-│   └── inbound_inventory/
+│   └── inbound_shipments/
 │       ├── incoming/
 │       ├── processed/
 │       └── rejected/
 ├── etl/
 │   ├── daily_detail_sales_etl.py
-│   └── inbound_inventory_etl.py
+│   └── inbound_shipments_etl.py
 ├── sql/
 │   ├── create_etl_log_table.sql
-│   ├── create_inbound_inventory_table.sql
+│   ├── create_inbound_shipments_table.sql
 │   └── create_daily_detail_sales_table.sql
 ├── utils/
 │   └── postgres_uploader.py
@@ -73,7 +73,7 @@ pip install -r requirements.txt
 
 ```bash
 psql -U your_pg_user -d your_db_name -h localhost -f sql/create_etl_log_table.sql
-psql -U your_pg_user -d your_db_name -h localhost -f sql/create_inbound_inventory_table.sql
+psql -U your_pg_user -d your_db_name -h localhost -f sql/create_inbound_shipments_table.sql
 psql -U your_pg_user -d your_db_name -h localhost -f sql/create_daily_detail_sales_table.sql
 ```
 
