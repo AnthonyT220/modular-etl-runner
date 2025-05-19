@@ -1,0 +1,62 @@
+				For Store No: 20																
+																				
+Customer Name (ID)	Trns No	Online Trans	Trans Desc	Taxable Merch	Non Taxable Merch	Taxable Non-Merch	Non Tax Non Merch	Restock Charge	Sales Tax	Cash Amount	Check Amount	Bank Card Amt	Payment Type Code	Refund Amount	Applied Amount	Adjusted Amount	A/R Amount	Exchange	Financed	Exception
+"Kojic, Snezana (8007699)"	30786	N	Rtn Payment									-28.24	V				28.24			
+"Kojic, Snezana (8007699)"	30787	N	Mrch Sale	-36					-3.1			39.1	M				0			
+"Beach, Pamela (9545515)"	30788	N	Mrch Sale	-1104			-149		-94.94			1347.94	A				0			
+"Byall, Carol (2028286)"	30789	N	Mrch Sale	-556					-47.82			603.82	M				0			
+"Bohn, Frederik (3157857)"	30790	N	Mrch Sale	-129					-11.09			140.09	M				0			
+"Aaron, Nelson (5279655)"	30791	N	Rtn Payment									-433.86	A				433.86			
+"Mackie, Leah (7192989)"	30792	N	Mrch Sale	-1057					-90.9			1147.9	V				0			
+"Gold, Joan (8070779)"	30793	N	Mrch Sale	-349					-30.01			379.01	M				0			
+"Olack, Madelyn (2429838)"	30794	N	Mrch Sale	-1208					-103.89			1311.89	A				0			
+"Young, Brandon (2035731)"	30795	N	Mrch Sale	-75					-6.45			81.45	V				0			
+"Felix, Inri (3155643)"	30796	Y	Mrch Sale	-798					-68.63			860.24	V				0.00 *			
+"Felix, Inri (3155643)"	30796	Y	Mrch Sale									6.39	Z				0			
+"Young, Brandon (2035731)"	30797	N	Payment									357.05	V				-357.05			
+"Reinert, Trisha (5298007)"	30798	N	Payment									552.39	A				-552.39			
+"Markson, Tom (3886515)"	30799	N	Mrch Sale	-379					-32.59			411.59	V				0			
+																				
+01/02/25 Transaction Totals:				-5691	0	0	-149	0	-489.42	0	0	6776.76	V	0	0	0	-447.34			
+																				
+				    Sales Tax Detail Info																
+				8.6	-5691															
+																				
+				Credit Card Detail Info - Total....		Credit Card Detail Info - Online....		Credit Card Detail Info - Store....												
+				American Express	2778.36	American Express - Online	0	American Express - Store	2778.36											
+				Master Card	1162.02	Master Card - Online	0	Master Card - Store	1162.02											
+				Visa	2829.99	Visa - Online	860.24	Visa - Store	1969.75											
+				Alt Pmt	6.39	Alt Pmt - Online	6.39	Alt Pmt - Store	0											
+																				
+																				
+				Cash and Checks :  ______________________________   Please explain any short or over amounts below.																
+																				
+																				
+				Credit Cards    :  ______________________________																
+																				
+																				
+				Short or Over   :  ______________________________   ______________________________																
+																				
+																				
+				                               Short                              Over																
+																				
+																				
+																				
+																				
+																				
+				Mngr's Signature:  ______________________________																
+																				
+																				
+				Report Grand Totals:																
+01/02/25 Transaction Totals:				-5691	0	0	-149	0	-489.42	0	0	6776.76	Z	0	0	0	-447.34			
+																				
+				    Sales Tax Detail Info																
+				8.6	-5691															
+																				
+				Credit Card Detail Info - Total....		Credit Card Detail Info - Online....		Credit Card Detail Info - Store....												
+				American Express	2778.36	American Express - Online	0	American Express - Store	2778.36											
+				Master Card	1162.02	Master Card - Online	0	Master Card - Store	1162.02											
+				Visa	2829.99	Visa - Online	860.24	Visa - Store	1969.75											
+				Alt Pmt	6.39	Alt Pmt - Online	6.39	Alt Pmt - Store	0											
+																				
+				* Indicates an AR subtotal for transactions that have multiple checks and/or credit cards.																

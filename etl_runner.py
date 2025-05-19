@@ -2,14 +2,19 @@ import os
 import psycopg2
 from etl.daily_detail_sales_etl import run_etl as run_sales_etl
 from etl.inbound_inventory_etl import run_etl as run_inbound_inventory_etl
+from etl.inbound_shipments_etl import run_etl as run_inbound_shipments_etl
 from utils.postgres_uploader import upload_to_postgres
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # === Pipeline Configuration ===
 
 pipeline_map = {
     "daily_detail_sales": run_sales_etl,
     "inbound_inventory": run_inbound_inventory_etl,
+    "inbound_shipments": run_inbound_shipments_etl,
 }
 
 # === ETL Log Helpers ===
@@ -32,7 +37,9 @@ def log_etl_file(table_name, filename, report_date, row_count, status, conn):
             report_date,
             row_count,
             status,
-            datetime.utcnow()
+            from datetime import datetime, timezone
+            datetime.now(timezone.utc)
+
         ))
     conn.commit()
 
@@ -43,12 +50,13 @@ def main():
 
     # Read DB connection info from environment or use fallback
     conn = psycopg2.connect(
-        dbname=os.getenv("PG_DB", "your_db_name"),
-        user=os.getenv("PG_USER", "your_user"),
-        password=os.getenv("PG_PASS", "your_password"),
+        dbname=os.getenv("PG_DATABASE"),  # was PG_DB
+        user=os.getenv("PG_USER"),
+        password=os.getenv("PG_PASSWORD"),
         host=os.getenv("PG_HOST", "localhost"),
         port=os.getenv("PG_PORT", "5432")
     )
+
 
     for pipeline_key, etl_function in pipeline_map.items():
         folder_path = os.path.join(base_folder, pipeline_key, "incoming")
@@ -67,6 +75,15 @@ def main():
                 print(f"🟡 Running pipeline: {pipeline_key} for file: {file_name}")
                 df = etl_function(file_path)
 
+                # 🔍 Debug output
+                print(f"🧪 DataFrame returned from ETL: {type(df)}")
+                if df is not None:
+                    print(f"🧪 Shape: {df.shape}")
+                    print(f"🧪 Columns: {df.columns.tolist()}")
+                    print(df.head(2))
+                else:
+                    print("🧪 No DataFrame returned (None)")
+                    
                 if df is not None and not df.empty:
                     print(f"✅ Transformed {len(df)} rows. Uploading to Postgres...")
                     upload_to_postgres(df, table_name=pipeline_key)
