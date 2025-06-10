@@ -1,0 +1,21 @@
+													For Store No: 4						
+																			
+Store No	Customer Name (ID)	Trns No	Trns Date	Online Trans	Org Inv No	Trans Desc	Sales Tax Rate	Delivery Address 1	Delivery Address 2	Delivery City	Delivery State	Delivery Zip Code	Taxable Merch	Non Taxable Merch	Taxable Non-Merch	Non Tax Non Merch	Restock Charge	Sales Tax	
+4	Groina, Laurie (8426160)	661191	01/15/2025	N		Payment		445 N. ROSSMORE AVE	UNIT 206	LA	CA	90004							
+4	Jambaljamts, Odjargal (3325991)	661192	01/15/2025	N		Payment		10000 SANTA MONICA	BLVD APT PH304	LOS ANGELES	CA	90067							
+4	Wood, Suzanne (9164312)	661193	01/15/2025	N		Mrch Sale	09.50000	10742 FARRAGUT DR		CULVER CITY	CA	90230	-3598.00					-341.81	
+4	Phelps, Barton (4757808)	661194	01/15/2025	N		Payment		10256 LELIA LN		LA	CA	90077							
+4	Makoff, Rhoda (9135780)	661195	01/15/2025	N		Payment		1118 3RD. STREET	UNIT 305	SANTA MONICA	CA	90403							
+4	Makoff, Rhoda (9135780)	661196	01/15/2025	N	661195	Rtn Payment		1118 3RD. STREET	UNIT 305	SANTA MONICA	CA	90403							
+4	Gourrier, Alain (4225374)	661197	01/15/2025	N		Mrch Sale	09.50000	8906 VILLANOVA AVE		LOS ANGELES	CA	90045	-629.00		-149.00			-73.91	
+4	Osterholt, Debbie (9689615)	661198	01/15/2025	Y		Mrch Sale	09.50000	4344 PROMADE WAY	P208	MARINA DEL REY	CA	90292	-318.00					-30.21	
+4	Cheung, Tiffany (7025120)	661199	01/15/2025	N		Mrch Sale	09.50000	3415 MCLAUGHLIN AVE	UNIT #203	LOS ANGELES	CA	90066	-2413.00		-149.00			-243.39	
+4	Stone, Scott (3966387)	661200	01/15/2025	N		Mrch Sale	09.50000	8850 VENICE BOULEVARD		W LOS ANGELES	CA	90034	-449.00					-42.66	
+4	Patel, Rajshree (4305190)	661201	01/15/2025	N		Mrch Sale	09.50000	8850 VENICE BOULEVARD		W LOS ANGELES	CA	90034	-149.00					-14.16	
+4	Ramirez, Alfonso (6316013)	661202	01/15/2025	N		Mrch Sale	09.50000	1255 N KINGS RD	102	W. HOLLYWOOD	CA	90069	-379.00					-36.01	
+																			
+													Report Grand Totals:						
+4													-7935.00	0.00	-298.00	0.00	0.00	-782.15	
+																			
+													    Sales Tax Detail Info						
+													09.50000	-8233.00					

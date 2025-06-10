@@ -9,14 +9,23 @@ import pandas as pd
 from datetime import datetime
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+
 from etl.daily_detail_sales_etl import run_etl as run_sales_etl
 from etl.inbound_shipments_etl import run_etl as run_shipments_etl
+from etl.daily_sales_tax_etl import run_etl as run_sales_tax_etl
 from utils.postgres_uploader import upload_to_postgres
 
 # === CONFIG ===
 WATCH_PATHS = {
     "daily_detail_sales": "data_files/daily_detail_sales/incoming",
-    "inbound_shipments": "data_files/inbound_shipments/incoming"
+    "inbound_shipments": "data_files/inbound_shipments/incoming",
+    "daily_sales_tax": "data_files/daily_sales_tax/incoming"
+}
+
+etl_func_map = {
+    "daily_detail_sales": run_sales_etl,
+    "inbound_shipments": run_shipments_etl,
+    "daily_sales_tax": run_sales_tax_etl
 }
 
 DB_CONFIG = {
@@ -39,29 +48,25 @@ class NewFileHandler(FileSystemEventHandler):
                 file_name = os.path.basename(file_path)
                 print(f"📁 Detected new file: {file_name} for table {table_name}")
 
+                time.sleep(1.5)  # Delay to ensure file is fully written
+
                 if is_file_already_loaded(table_name, file_name):
                     print(f"⚠️ Skipping duplicate file: {file_name}")
                     log_etl_load(table_name, file_name, report_date=None, row_count=0, status="duplicate")
                     safe_move_file(file_path, table_name, "rejected")
                     return
 
-                etl_func_map = {
-                    "daily_detail_sales": run_sales_etl,
-                    "inbound_shipments": run_shipments_etl
-                }
                 etl_func = etl_func_map[table_name]
-
 
                 try:
                     print(f"🧪 Using ETL function: {etl_func.__name__}")
-
                     df = etl_func(file_path)
 
                     if df is not None and not df.empty:
                         print(f"✅ Parsed {len(df)} rows. Uploading to {table_name}...")
                         upload_to_postgres(df, table_name)
 
-                        report_date = df["Report Date"].iloc[0] if "Report Date" in df.columns else None
+                        report_date = df["report_date"].iloc[0] if "report_date" in df.columns else None
                         log_etl_load(table_name, file_name, report_date=report_date, row_count=len(df), status="success")
                         safe_move_file(file_path, table_name, "processed")
                         print(f"✅ Finished processing {file_name}\n")

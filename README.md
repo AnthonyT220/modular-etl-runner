@@ -26,17 +26,25 @@ modular-etl-runner/
 │   │   ├── incoming/
 │   │   ├── processed/
 │   │   └── rejected/
-│   └── inbound_shipments/
+│   ├── inbound_shipments/
+│   │   ├── incoming/
+│   │   ├── processed/
+│   │   └── rejected/
+│   └── daily_sales_tax/
 │       ├── incoming/
 │       ├── processed/
 │       └── rejected/
+    
 ├── etl/
 │   ├── daily_detail_sales_etl.py
-│   └── inbound_shipments_etl.py
+│   ├── inbound_shipments_etl.py
+│   └── daily_sales_tax_etl.py
 ├── sql/
 │   ├── create_etl_log_table.sql
 │   ├── create_inbound_shipments_table.sql
-│   └── create_daily_detail_sales_table.sql
+    ├── create_daily_detail_sales_table.sql
+│   └── create_daily_sales_tax_table.sql
+
 ├── utils/
 │   └── postgres_uploader.py
 ├── watch_incoming.py
@@ -75,6 +83,7 @@ pip install -r requirements.txt
 psql -U your_pg_user -d your_db_name -h localhost -f sql/create_etl_log_table.sql
 psql -U your_pg_user -d your_db_name -h localhost -f sql/create_inbound_shipments_table.sql
 psql -U your_pg_user -d your_db_name -h localhost -f sql/create_daily_detail_sales_table.sql
+psql -U your_pg_user -d your_db_name -h localhost -f sql/create_daily_sales_tax_table.sql
 ```
 
 ### 5. Configure Environment Variables
@@ -94,7 +103,7 @@ PG_DATABASE=modular_etl
 ## 🏁 Running the Watcher
 
 ```bash
-python3 watch_incoming.py
+python watch_incoming.py
 ```
 
 To stop: `CTRL+C`
